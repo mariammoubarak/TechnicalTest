@@ -1,0 +1,53 @@
+
+<h1>Please Select File</h1>
+<div class="csv-file-chooser-section">
+
+  <input type="file" #fileImportInput name="File Upload" id="csvFileUpload" (change)="fileChangeListener($event)"
+         accept=".csv" />
+
+</div>
+
+<div class="csv-result-table">
+
+  <table>
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>Subject</th>
+        <th>Scores</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let csvData of csvRecords;let i = index;">
+
+        <td>{{csvData.studentID}}</td>
+        <td>
+          <span>{{csvData.name}}</span>
+        </td>
+        <td>
+          <span>{{csvData.subject}}</span>
+        </td>
+        <td>
+          <table>
+            <thead>
+              <tr>
+                <th>Learning Objective</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let score of csvData.scores">
+                <td>{{ score.learningObjective }}</td>
+                <td>{{ score.score }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+</div>
